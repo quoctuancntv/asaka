@@ -401,6 +401,67 @@
         </div>
     </section>
 
+    <!-- ***** CONTACT FORM ***** -->
+    <section id="ticket" class="sec-up mb-0">
+        <div class="container">
+            <div class="sec-main sec-bg1">
+                <div class="randomline">
+                    <div class="bigline"></div>
+                    <div class="smallline"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 cd-filter-block mb-0">
+                        <div class="form-contact cd-filter-content p-0 sec-bx">
+                            <h2 class="section-heading mb-1">Full out the Contact form to contact us</h2>
+                            <p>We Will Help You To Choose The Best Plan!</p>
+                            <form id="contactForm" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-user-tie"></i></label>
+                                        <input id="name" type="text" name="name" placeholder="Full Name" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-envelope"></i></label>
+                                        <input id="email" type="email" name="email" placeholder="Email Address" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-file-alt"></i></label>
+                                        <input id="subject" type="text" name="subject" placeholder="Subject" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="cd-select mt-4">
+                                            <label class="db"></label>
+                                            <select id="department" name="department" class="select-filter">
+                        <option value="">Choose Department</option>
+                        <option value="Support/Help Desk">Support/Help Desk</option>
+                        <option value="Commercial Department">Commercial Department</option>
+                        <option value="Sales Department">Sales Department</option>
+                        <option value="Schedule Metings">Schedule Metings</option>
+                      </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-4">
+                                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Message..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-5">
+                                        <input name="newsletter" type="checkbox" id="checkbox" class="filter">
+                                        <button type="submit" value="Send" class="btn btn-default-yellow-fill float-left mr-3">Submit Ticket</button>
+                                        <button type="reset" value="reset" class="btn btn-default-fill mt-0 mb-3 mr-3">Reset</button><br>
+                                    </div>
+                                    <div id="msgSubmit" class="col-md-12 mt-4">
+                                        <h3 class="c-pink"> Message Submitted!</h3>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ***** UPLOADED FOOTER FROM FOOTER.HTML ***** -->
     <footer id="footer">
         <div class="call-now">
@@ -424,6 +485,7 @@
     <script defer src="js/owl.carousel.min.js"></script>
     <script defer src="js/isotope.min.js"></script>
     <script src="js/wow.min.js"></script>
+    <script src="from.js"></script>
     <script>
         new WOW().init();
     </script>
