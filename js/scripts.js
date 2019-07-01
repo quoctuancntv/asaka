@@ -6,7 +6,7 @@
  * Copyright 2019 Antler
  * Version: 1.5
  -------------------------------------------------------------------*/
- 
+
 document.addEventListener('DOMContentLoaded', function() {
     "use strict";
     loadWindowSettings();
@@ -43,18 +43,18 @@ document.addEventListener('DOMContentLoaded', function() {
 //----------------------------------------------------/
 // SVG Change color style 
 //----------------------------------------------------/
-$("img.svg").each(function () {
-  var $img = jQuery(this);
-  var attributes = $img.prop("attributes");
-  var imgURL = $img.attr("src");
-  $.get(imgURL, function (data) {
-    var $svg = $(data).find('svg');
-    $svg = $svg.removeAttr('xmlns:a');
-    $.each(attributes, function() {
-      $svg.attr(this.name, this.value);
+$("img.svg").each(function() {
+    var $img = jQuery(this);
+    var attributes = $img.prop("attributes");
+    var imgURL = $img.attr("src");
+    $.get(imgURL, function(data) {
+        var $svg = $(data).find('svg');
+        $svg = $svg.removeAttr('xmlns:a');
+        $.each(attributes, function() {
+            $svg.attr(this.name, this.value);
+        });
+        $img.replaceWith($svg);
     });
-    $img.replaceWith($svg);
-  });
 });
 //----------------------------------------------------/
 // Styleswitch color style 
@@ -82,8 +82,7 @@ function switchVisible() {
         if (document.getElementById('price-val').style.display == 'none') {
             document.getElementById('price-val').style.display = 'block';
             document.getElementById('priceon-val').style.display = 'none';
-        }
-        else {
+        } else {
             document.getElementById('price-val').style.display = 'none';
             document.getElementById('priceon-val').style.display = 'block';
         }
@@ -93,11 +92,11 @@ function switchVisible() {
 // Active Menu
 //----------------------------------------------------/
 jQuery(function($) {
-    var path = window.location.href; 
-    $('#menu ul li a').each(function() { 
+    var path = window.location.href;
+    $('#menu ul li a').each(function() {
         if (this.href === path) {
             $(this).addClass('active');
-            $( this ).parent().parent().closest("li").addClass('active2');
+            $(this).parent().parent().closest("li").addClass('active2');
             $('.active2 a:first').addClass('active');
         }
     });
@@ -117,7 +116,7 @@ $(".mobile .menu-item").on('click',
 //----------------------------------------------------/
 // i18next translate
 //----------------------------------------------------/
-function translate(){
+function translate() {
     $.getScript('js/lib/i18next.min.js', function() {
         $.getScript('js/lib/i18nextXHRBackend.min.js', function() {
             $.getScript('js/lib/jquery-i18next.min.js', function() {
@@ -153,18 +152,18 @@ function translate(){
 /*---------------------------------*/
 /*   Load header and footer file   */
 /*---------------------------------*/
-function headerfooter(){
-    $("#header").load("header.html", function(res, status, xhr){
+function headerfooter() {
+    $("#header").load("header.html", function(res, status, xhr) {
         $('#drop-lng [data-lng="' + localStorage.getItem('lng') + '"]').addClass('xpto active');
-        $('#drop-lng label').click(function(e){
+        $('#drop-lng label').click(function(e) {
             e.preventDefault();
             localStorage.setItem('lng', $(this).attr('data-lng'));
             location.reload(true);
         });
     });
-    $("#footer").load("footer.html", function(res, status, xhr){
+    $("#footer").load("footer.html", function(res, status, xhr) {
         $('#drop-lng [data-lng="' + localStorage.getItem('lng') + '"]').addClass('xpto active');
-        $('#drop-lng label').click(function(e){
+        $('#drop-lng label').click(function(e) {
             e.preventDefault();
             localStorage.setItem('lng', $(this).attr('data-lng'));
             location.reload(true);
@@ -174,26 +173,26 @@ function headerfooter(){
 /*----------------------*/
 /*        Switch        */
 /*----------------------*/
-function switching(){
-    $(window).on('load',function(){
+function switching() {
+    $(window).on('load', function() {
         var dToggle = $('#run-switch');
         var planPeriod = $('.price-content .period', '.price-container');
-        dToggle.on('click', function(){
-            $('.mo',this).toggleClass('active');
-            $('.an',this).toggleClass('active');
-            $('.month',this).toggleClass('active');
-            $('.switch',this).toggleClass('on');
-            $('.year',this).toggleClass('active');
-            
-            if(planPeriod.hasClass('annually')){
+        dToggle.on('click', function() {
+            $('.mo', this).toggleClass('active');
+            $('.an', this).toggleClass('active');
+            $('.month', this).toggleClass('active');
+            $('.switch', this).toggleClass('on');
+            $('.year', this).toggleClass('active');
+
+            if (planPeriod.hasClass('annually')) {
                 planPeriod.text('month');
-                for(var i=0;i<=2;i++){
-                    $('.price-container:eq('+i+') .value').text(parseFloat(Number($('.price-container:eq('+i+') .value').text())/12).toFixed(2));
+                for (var i = 0; i <= 2; i++) {
+                    $('.price-container:eq(' + i + ') .value').text(parseFloat(Number($('.price-container:eq(' + i + ') .value').text()) / 12).toFixed(2));
                 }
-            }else{
+            } else {
                 planPeriod.text('year');
-                for(var i=0;i<=2;i++){
-                    $('.price-container:eq('+i+') .value').text(parseFloat(Number($('.price-container:eq('+i+') .value').text())*12).toFixed(2));
+                for (var i = 0; i <= 2; i++) {
+                    $('.price-container:eq(' + i + ') .value').text(parseFloat(Number($('.price-container:eq(' + i + ') .value').text()) * 12).toFixed(2));
                 }
             }
             planPeriod.toggleClass('annually');
@@ -204,8 +203,9 @@ function switching(){
 /*   Full Nav Open      */
 /*----------------------*/
 function openNav() {
-        document.getElementById('myNav').style.display = 'block';
-    }
+    document.getElementById('myNav').style.display = 'block';
+}
+
 function closeNav() {
     document.getElementById('myNav').style.display = 'none';
 }
@@ -213,19 +213,19 @@ function closeNav() {
 /*   Display & Hide     */
 /*----------------------*/
 function display() {
-    $('#showall').on("click", function(){
+    $('#showall').on("click", function() {
         $('.targetDiv').show();
     });
-    $('.showSingle').on("click", function(){
+    $('.showSingle').on("click", function() {
         $('.targetDiv').hide();
-        $('#div'+$(this).attr('target')).show();
+        $('#div' + $(this).attr('target')).show();
     });
 }
 /*----------------------*/
 /*   Active Button      */
 /*----------------------*/
 function active() {
-    $(".heading a").on("click", function(){
+    $(".heading a").on("click", function() {
         $(".heading a").removeClass("active");
         $(this).addClass("active");
     });
@@ -233,10 +233,10 @@ function active() {
 /*----------------------*/
 /*    Scroll Goto       */
 /*----------------------*/
-function scrollgoto(){
+function scrollgoto() {
     $('.gocheck').on('click', function(event) {
         var target = $(this.getAttribute('href'));
-        if( target.length ) {
+        if (target.length) {
             event.preventDefault();
             $('html, body').stop().animate({
                 scrollTop: target.offset().top
@@ -247,44 +247,46 @@ function scrollgoto(){
 /*----------------------*/
 /*       Popover        */
 /*----------------------*/
-function popover(){
+function popover() {
     $('[data-toggle="popover"]').popover()
 }
 /*----------------------*/
 /*    Contact Form      */
 /*----------------------*/
-function contactform() {
-  $('#contactForm').on('submit', function(e) {
-    $.ajax({
-     type: "POST",
-      url:'php/form-process.php',
-      data: $(this).serialize(),
-      success: function() {
-        $('#msgSubmit').fadeIn(100).show();
-       }
-    });
-    e.preventDefault();
-  });
-};
+// function contactform() {
+//   $('#contactForm').on('submit', function(e) {
+//     $.ajax({
+//      type: "POST",
+//       url:'php/form-process.php',
+//       data: $(this).serialize(),
+//       success: function() {
+//         $('#msgSubmit').fadeIn(100).show();
+//        }
+//     });
+//     e.preventDefault();
+//   });
+// };
 /*----------------------*/
 /*    Live Chat         */
 /*----------------------*/
-function livechat(){
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/58127f62c7829d0cd36c88a9/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+function livechat() {
+    var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/58127f62c7829d0cd36c88a9/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
     })();
 }
 /*----------------------*/
 /*     Isotope          */
 /*----------------------*/
-function isotope(){
-    $(window).on('load', function(){
+function isotope() {
+    $(window).on('load', function() {
         var selectedCategory;
         var $grid = $('.featured').isotope({
             itemSelector: '.isotope-item',
@@ -292,94 +294,95 @@ function isotope(){
                 columnWidth: '.isotope-item',
             },
             getSortData: {
-                selectedCategory: function( itemElem ) {
-                    return $( itemElem ).hasClass( selectedCategory ) ? 0 : 1;
+                selectedCategory: function(itemElem) {
+                    return $(itemElem).hasClass(selectedCategory) ? 0 : 1;
                 }
             }
-      });
-      var $items = $('.featured').find('.featured-items');
-      $('.sort-button-group').on( 'click', '.button', function() {
-        selectedCategory = $( this ).attr('data-category');
-        if ( selectedCategory === 'all' ) {
-            $grid.isotope({
-                sortBy: 'original-order'
-            });
-            $items.css({
+        });
+        var $items = $('.featured').find('.featured-items');
+        $('.sort-button-group').on('click', '.button', function() {
+            selectedCategory = $(this).attr('data-category');
+            if (selectedCategory === 'all') {
+                $grid.isotope({
+                    sortBy: 'original-order'
+                });
+                $items.css({
+                    opacity: 1
+                });
+                return;
+            }
+            var selectedClass = '.' + selectedCategory;
+            $items.filter(selectedClass).css({
                 opacity: 1
             });
-            return;
-        }
-        var selectedClass = '.' + selectedCategory;
-        $items.filter( selectedClass ).css({
-            opacity: 1
-        });
-        $items.not( selectedClass ).css({
-            opacity: 0
-        });
-        $grid.isotope('updateSortData');
-        $grid.isotope({ sortBy: 'selectedCategory' });
-      });
-
-      $('.button-group').each( function( i, buttonGroup ) {
-            var $buttonGroup = $( buttonGroup );
-            $buttonGroup.on( 'click', 'li', function() {
-                $buttonGroup.find('.active').removeClass('active');
-                $( this ).addClass('active');
+            $items.not(selectedClass).css({
+                opacity: 0
             });
-      });
+            $grid.isotope('updateSortData');
+            $grid.isotope({ sortBy: 'selectedCategory' });
+        });
+
+        $('.button-group').each(function(i, buttonGroup) {
+            var $buttonGroup = $(buttonGroup);
+            $buttonGroup.on('click', 'li', function() {
+                $buttonGroup.find('.active').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
 
     });
 }
 /*----------------------*/
 /*         OWL          */
 /*----------------------*/
-function owldemo(){
-$('.owl-carousel').owlCarousel({
-    onInitialized:theThing, 
-    nav:false,
-    singleItem:true,
-    autoHeight:true,
-    dots:true,
-    center:true,
-    margin:0,
-    padding:0,
-    animateOut: 'fadeOut',
+function owldemo() {
+    $('.owl-carousel').owlCarousel({
+        onInitialized: theThing,
+        nav: false,
+        singleItem: true,
+        autoHeight: true,
+        dots: true,
+        center: true,
+        margin: 0,
+        padding: 0,
+        animateOut: 'fadeOut',
 
-    items:1,
-     autoPlay:5500,
-     stopOnHover:true,
-     center:true,
-     navigation:false,
-     pagination:false,
-     goToFirstSpeed : 1300,
-     singleItem:true,
-     autoHeight:true,
-     responsive:true,
-     responsiveRefreshRate:200,
-     responsiveBaseWidth: window,      
-     video:true, 
+        items: 1,
+        autoPlay: 5500,
+        stopOnHover: true,
+        center: true,
+        navigation: false,
+        pagination: false,
+        goToFirstSpeed: 1300,
+        singleItem: true,
+        autoHeight: true,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        video: true,
 
-    autoplay:true,
-    autoplayTimeout:9000,
-    autoplayHoverPause:true,
-    navText: [
-    "<i class='fa fa-chevron-left'></i>",
-    "<i class='fa fa-chevron-right'></i>"
-    ],
-    responsive:{
-        0:{
-            items:1
-        },
+        autoplay: true,
+        autoplayTimeout: 9000,
+        autoplayHoverPause: true,
+        navText: [
+            "<i class='fa fa-chevron-left'></i>",
+            "<i class='fa fa-chevron-right'></i>"
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+        }
+    });
+
+    function theThing(event) {
+        $(".active .owl-video-play-icon").trigger("click")
     }
-});
-function theThing(event){
-  $(".active .owl-video-play-icon").trigger("click")
-}
 }
 /*----------------------*/
 /*     Back to top      */
 /*----------------------*/
-function backtotop(){
+function backtotop() {
     // browser window scroll (in pixels) after which the "back to top" link is shown
     var offset = 300,
         //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
@@ -389,19 +392,18 @@ function backtotop(){
         //grab the "back to top" link
         $back_to_top = $('.cd-top');
     //hide or show the "back to top" link
-    $(window).scroll(function(){
-        ( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
-        if( $(this).scrollTop() > offset_opacity ) {
+    $(window).scroll(function() {
+        ($(this).scrollTop() > offset) ? $back_to_top.addClass('cd-is-visible'): $back_to_top.removeClass('cd-is-visible cd-fade-out');
+        if ($(this).scrollTop() > offset_opacity) {
             $back_to_top.addClass('cd-fade-out');
         }
     });
     //smooth scroll to top
-    $back_to_top.on('click', function(event){
+    $back_to_top.on('click', function(event) {
         event.preventDefault();
         $('body,html').animate({
-            scrollTop: 0 ,
-            }, scroll_top_duration
-        );
+            scrollTop: 0,
+        }, scroll_top_duration);
     });
 }
 /*----------------------*/
@@ -415,59 +417,58 @@ function loader() {
 /*----------------------*/
 /*     Listen Slick     */
 /*----------------------*/
-function listenSlick(){
-  $('.slick').on('unslick', function(){
-    var resizeCheck = setInterval(function(){
-      if ($(window).width() > 590) {
-        clearInterval(resizeCheck);
-        slick();
-      }
-    },100);
-  });
+function listenSlick() {
+    $('.slick').on('unslick', function() {
+        var resizeCheck = setInterval(function() {
+            if ($(window).width() > 590) {
+                clearInterval(resizeCheck);
+                slick();
+            }
+        }, 100);
+    });
 }
 /*----------------------*/
 /*     Slick Slider     */
 /*----------------------*/
 function slick() {
     $('#slider').slick({
-      centerMode: true,
-      centerPadding: '200px',
-      slidesToShow: 3,
-      infinite: true,
-      arrows: true,
-      responsive: [
-        {
-          breakpoint: 1200,
-          settings: {
-            arrows: true,
-            centerMode: true,
-            centerPadding: '100px',
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 991,
-          settings: {
-            arrows: true,
-            centerMode: true,
-            centerPadding: '200px',
-            slidesToShow: 1
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: true,
-            centerMode: true,
-            centerPadding: '150px',
-            slidesToShow: 1
-          }
-        },
-        {
-          breakpoint: 590,
-          settings: "unslick"
-        }
-      ]
+        centerMode: true,
+        centerPadding: '200px',
+        slidesToShow: 3,
+        infinite: true,
+        arrows: true,
+        responsive: [{
+                breakpoint: 1200,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '100px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '200px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '150px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 590,
+                settings: "unslick"
+            }
+        ]
     });
 }
 /*----------------------*/
@@ -505,26 +506,26 @@ function popup() {
     });
     // Initialize popup as usual
     $('.image-link').magnificPopup({
-      type: 'image',
-      mainClass: 'mfp-with-zoom',
-      gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [0, 1]
-      },
-      image: {
-        // options for image content type
-        titleSrc: 'title'
-      },
-      zoom: {
-        enabled: true,
-        navigateByImgClick: true,
-        duration: 300,
-        easing: 'ease-in-out',
-        opener: function(openerElement) {
-          return openerElement.is('img') ? openerElement : openerElement.find('img');
-        }
-      },
+        type: 'image',
+        mainClass: 'mfp-with-zoom',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1]
+        },
+        image: {
+            // options for image content type
+            titleSrc: 'title'
+        },
+        zoom: {
+            enabled: true,
+            navigateByImgClick: true,
+            duration: 300,
+            easing: 'ease-in-out',
+            opener: function(openerElement) {
+                return openerElement.is('img') ? openerElement : openerElement.find('img');
+            }
+        },
 
     });
 }
@@ -552,6 +553,7 @@ function misc() {
 /*        Swiper        */
 /*----------------------*/
 var swipers = [];
+
 function loadSwiper() {
     $('.swiper-container').each(function(i) {
         $(this).attr({
@@ -577,12 +579,12 @@ function loadTooltips() {
         $('[data-toggle="tooltip"]').tooltip()
     })
 }
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-/*-------------------------*/
-/*          Slider         */
-/*-------------------------*/
+$(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    /*-------------------------*/
+    /*          Slider         */
+    /*-------------------------*/
 function initSliderUI() {
     var initIterator = 0;
     if ($(".slider-ui").length) {
@@ -643,8 +645,8 @@ function initSliderUI() {
             input.addEventListener('keydown', function(e) {
                 // Convert the string to a number.
                 var value = Number(keypressSlider.noUiSlider.get()),
-                sliderStep = keypressSlider.noUiSlider.steps()
-                // Select the stepping for the first handle.
+                    sliderStep = keypressSlider.noUiSlider.steps()
+                    // Select the stepping for the first handle.
                 sliderStep = sliderStep[0];
                 // 13 is enter,
                 // 38 is key up,
@@ -661,76 +663,78 @@ function initSliderUI() {
                         break;
                 }
             });
+
             function getServicesInfo() {
-              var info = {
-                "VPS1": {
-                  "name": "Service A",
-                  "disk": "100GB",
-                  "ram": "1GB",
-                  "cpu": "1 Core",
-                  "bandwith": "100GB",
-                  "setup": "8€",
-                  "ip": "2 IPs",
-                  "price": "99.09",
-                  "priceon": "8.26"
-                },
-                "VPS2": {
-                  "name": "Service B",
-                  "disk": "200GB",
-                  "ram": "4GB",
-                  "cpu": "2 Core",
-                  "setup": "15€",
-                  "ip": "4 IPs",
-                  "bandwith": "500GB",
-                  "price": "155.00",
-                  "priceon": "12.92"
-                },
-                "VPS3": {
-                  "name": "Service C",
-                  "disk": "300GB",
-                  "ram": "8GB",
-                  "cpu": "4 Core",
-                  "setup": "Free",
-                  "ip": "8 IPs",
-                  "bandwith": "2TB",
-                  "price": "299.99",
-                  "priceon": "25.00"
-                },
-                "VPS4": {
-                  "name": "Service D",
-                  "disk": "400GB",
-                  "ram": "12GB",
-                  "cpu": "4 Core",
-                  "setup": "Free",
-                  "ip": "8 IPs",
-                  "bandwith": "Unlimited",
-                  "price": "395.22",
-                  "priceon": "32.94"
-                },
-                "VPS5": {
-                  "name": "Service E",
-                  "disk": "500GB",
-                  "ram": "16GB",
-                  "cpu": "8 Core",
-                  "setup": "Free",
-                  "ip": "12 IPs",
-                  "bandwith": "Unlimited",
-                  "price": "545.00",
-                  "priceon": "45.42"
-                }
-              };
-              return info;
+                var info = {
+                    "VPS1": {
+                        "name": "Service A",
+                        "disk": "100GB",
+                        "ram": "1GB",
+                        "cpu": "1 Core",
+                        "bandwith": "100GB",
+                        "setup": "8€",
+                        "ip": "2 IPs",
+                        "price": "99.09",
+                        "priceon": "8.26"
+                    },
+                    "VPS2": {
+                        "name": "Service B",
+                        "disk": "200GB",
+                        "ram": "4GB",
+                        "cpu": "2 Core",
+                        "setup": "15€",
+                        "ip": "4 IPs",
+                        "bandwith": "500GB",
+                        "price": "155.00",
+                        "priceon": "12.92"
+                    },
+                    "VPS3": {
+                        "name": "Service C",
+                        "disk": "300GB",
+                        "ram": "8GB",
+                        "cpu": "4 Core",
+                        "setup": "Free",
+                        "ip": "8 IPs",
+                        "bandwith": "2TB",
+                        "price": "299.99",
+                        "priceon": "25.00"
+                    },
+                    "VPS4": {
+                        "name": "Service D",
+                        "disk": "400GB",
+                        "ram": "12GB",
+                        "cpu": "4 Core",
+                        "setup": "Free",
+                        "ip": "8 IPs",
+                        "bandwith": "Unlimited",
+                        "price": "395.22",
+                        "priceon": "32.94"
+                    },
+                    "VPS5": {
+                        "name": "Service E",
+                        "disk": "500GB",
+                        "ram": "16GB",
+                        "cpu": "8 Core",
+                        "setup": "Free",
+                        "ip": "12 IPs",
+                        "bandwith": "Unlimited",
+                        "price": "545.00",
+                        "priceon": "45.42"
+                    }
+                };
+                return info;
             }
-            function refreshInfo(key){
-              var info = getServicesInfo();
-              $("#disk-val").html(info[key].disk);
-              $("#cpu-val").html(info[key].cpu);
-              $("#ram-val").html(info[key].ram);
-              $("#setup-val").html(info[key].setup);
-              $("#ip-val").html(info[key].ip);
-              $("#bw-val").html(info[key].bandwith);
-              $("#price-val").html(info[key].price);
-              $("#priceon-val").html(info[key].priceon);
+
+            function refreshInfo(key) {
+                var info = getServicesInfo();
+                $("#disk-val").html(info[key].disk);
+                $("#cpu-val").html(info[key].cpu);
+                $("#ram-val").html(info[key].ram);
+                $("#setup-val").html(info[key].setup);
+                $("#ip-val").html(info[key].ip);
+                $("#bw-val").html(info[key].bandwith);
+                $("#price-val").html(info[key].price);
+                $("#priceon-val").html(info[key].priceon);
             }
         });
     }
@@ -799,6 +803,7 @@ function accordion() {
     });
     accordHeight();
 }
+
 function accordHeight() {
     $(".accordion.faq .square").each(function() {
         $(this).css({
@@ -830,6 +835,7 @@ function selectInit() {
         });
     });
 }
+
 function loadWindowEvents() {
     /*-------------------------*/
     /*  Run Resize Functions   */
@@ -847,12 +853,12 @@ function loadWindowEvents() {
     /*-------------------------*/
     /*  RUN SCROLL FUNCTIONS   */
     /*-------------------------*/
-    $(window).on('scroll', function(){
-      if ($(window).scrollTop() >= 100) {
-          $('.menu-wrap').addClass('fixed');
-      } else {
-          $('.menu-wrap').removeClass('fixed');
-      }
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() >= 100) {
+            $('.menu-wrap').addClass('fixed');
+        } else {
+            $('.menu-wrap').removeClass('fixed');
+        }
     });
 }
 /*-------------------------*/
@@ -867,11 +873,13 @@ function loadCountdown() {
             '<div>%S <span class="title">seconds</span></div>'));
     });
 }
+
 function speacialCount() {
     $('#specialclock').countdown('2020/12/25', function(event) {
         $(this).html(event.strftime('Time left: [ %D days %H:%M:%S ]'));
     });
 }
+
 function offheight() {
     if ($(window).width() > 750) {
         var offerHeight = $(".offers").outerHeight(true);
@@ -985,6 +993,7 @@ function swiperInit() {
         swiper_content[i] = swipers['swiper-' + $(el).find('.swiper-container').attr('id')];
     });
 }
+
 function updateSlidesPerView(xsValue, smValue, mdValue, lgValue) {
     var winW = $(window).width();
     var winH = $(window).height();
