@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- // -->
-    <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="icon" type="image/png" href="img/logo.png" />
     <!-- // -->
     <title>Dự án khu đô thị Asaka Riverside</title>
@@ -193,6 +192,60 @@
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- ***** CONTACT FORM ***** -->
+    <section id="ticket" class="sec-up mb-0">
+        <div class="container">
+            <div class="sec-main sec-bg1">
+                <div class="randomline">
+                    <div class="bigline"></div>
+                    <div class="smallline"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 cd-filter-block mb-0">
+                        <div class="form-contact cd-filter-content p-0 sec-bx">
+                            <h2 class="section-heading mb-1">Liên Hệ Hỗ Trợ Và TƯ Vấn</h2>
+                            <p>Tư vấn miễn phí 24/24</p>
+                            <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-user-tie"></i></label>
+                                        <input id="nameField" type="text" name="entry.785241780" placeholder="Họ Và Tên" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-envelope"></i></label>
+                                        <input id="emailField" type="email" name="entry.1628889841" placeholder="Email Address" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><i class="fas fa-file-alt"></i></label>
+                                        <input id="mobField" type="number" name="entry.1025243583" placeholder="Số Điện Thoại" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="cd-select mt-4">
+                                            <label class="db"></label>
+                                            <input id="text-f" type="text" name="entry.1323476940" placeholder="Thời gian muốn nhận tư vấn">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group mt-4">
+                                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Message..."></textarea>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-6 mt-5">
+                                        <button type="submit" class="btn btn-default-yellow-fill float-left mr-3">GỬi Yêu Cầu</button>
+                                        <button type="reset" value="reset" class="btn btn-default-fill mt-0 mb-3 mr-3">Reset</button><br>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -401,142 +454,6 @@
         </div>
     </section>
 
-    <!-- ***** CONTACT FORM ***** -->
-    <section id="ticket" class="sec-up mb-0">
-        <div class="container">
-            <div class="sec-main sec-bg1">
-                <div class="randomline">
-                    <div class="bigline"></div>
-                    <div class="smallline"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 cd-filter-block mb-0">
-                        <div class="form-contact cd-filter-content p-0 sec-bx">
-                            <h2 class="section-heading mb-1">Full out the Contact form to contact us</h2>
-                            <p>We Will Help You To Choose The Best Plan!</p>
-                            <form id="contactForm" method="POST">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label><i class="fas fa-user-tie"></i></label>
-                                        <input id="name" type="text" name="name" placeholder="Full Name" required="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label><i class="fas fa-envelope"></i></label>
-                                        <input id="email" type="email" name="email" placeholder="Email Address" required="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label><i class="fas fa-file-alt"></i></label>
-                                        <input id="subject" type="text" name="subject" placeholder="Subject" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cd-select mt-4">
-                                            <label class="db"></label>
-                                            <select id="department" name="department" class="select-filter">
-                        <option value="">Choose Department</option>
-                        <option value="Support/Help Desk">Support/Help Desk</option>
-                        <option value="Commercial Department">Commercial Department</option>
-                        <option value="Sales Department">Sales Department</option>
-                        <option value="Schedule Metings">Schedule Metings</option>
-                      </select>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group mt-4">
-                                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Message..."></textarea>
-                                        </div>
-                                    </div> -->
-                                    <div class="col-md-6 mt-5">
-                                        <button type="submit" value="Send" class="btn btn-default-yellow-fill float-left mr-3">Submit Ticket</button>
-                                        <button type="reset" value="reset" class="btn btn-default-fill mt-0 mb-3 mr-3">Reset</button><br>
-                                    </div>
-                                    <div id="msgSubmit" class="col-md-12 mt-4">
-                                        <h3 class="c-pink"> Message Submitted!</h3>
-                                    </div>
-                                </div>
-                            </form>
-                            <script>
-                                // Variable to hold request
-                                var request;
-
-                                // Bind to the submit event of our form
-                                $("#contactForm").submit(function(event) {
-
-                                    // Prevent default posting of form - put here to work in case of errors
-                                    event.preventDefault();
-
-                                    // Abort any pending request
-                                    if (request) {
-                                        request.abort();
-                                    }
-                                    // setup some local variables
-                                    var $form = $(this);
-
-                                    // Let's select and cache all the fields
-                                    var $inputs = $form.find("input, select, button, textarea");
-
-                                    // Serialize the data in the form
-                                    var serializedData = $form.serialize();
-
-                                    // Let's disable the inputs for the duration of the Ajax request.
-                                    // Note: we disable elements AFTER the form data has been serialized.
-                                    // Disabled form elements will not be serialized.
-                                    $inputs.prop("disabled", true);
-
-                                    // Fire off the request to /form.php
-                                    request = $.ajax({
-                                        url: "https://script.google.com/macros/s/AKfycbzNej3LA_KMQ20NwHvK1W1k-s__qIywEJf5HNd7gN9c7ndOLLI/exec",
-                                        type: "post",
-                                        data: serializedData
-                                    });
-
-                                    // Callback handler that will be called on success
-                                    request.done(function(response, textStatus, jqXHR) {
-                                        // Log a message to the console
-                                        console.log("Hooray, it worked!");
-                                    });
-
-                                    // Callback handler that will be called on failure
-                                    request.fail(function(jqXHR, textStatus, errorThrown) {
-                                        // Log the error to the console
-                                        console.error(
-                                            "The following error occurred: " +
-                                            textStatus, errorThrown
-                                        );
-                                    });
-
-                                    // Callback handler that will be called regardless
-                                    // if the request failed or succeeded
-                                    request.always(function() {
-                                        // Reenable the inputs
-                                        $inputs.prop("disabled", false);
-                                    });
-
-                                });
-                            </script>
-                            <script>
-                                new WOW().init();
-                            </script>
-                            <script>
-                                $(function() {
-                                    var selectedClass = "";
-                                    $(".filter").click(function() {
-                                        selectedClass = $(this).attr("data-rel");
-                                        $("#gallery").fadeTo(100, 0.1);
-                                        $("#gallery div").not("." + selectedClass).fadeOut().removeClass('animation');
-                                        setTimeout(function() {
-                                            $("." + selectedClass).fadeIn().addClass('animation');
-                                            $("#gallery").fadeTo(300, 1);
-                                        }, 300);
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ***** UPLOADED FOOTER FROM FOOTER.HTML ***** -->
     <footer id="footer">
         <div class="call-now">
@@ -550,7 +467,7 @@
     <!-- ***** BUTTON GO TOP ***** -->
     <a href="#0" class="cd-top"> <i class="fas fa-angle-up"></i> </a>
     <!-- Javascript -->
-    <script src="js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="js/popper.min.js"></script>
     <script defer src="js/bootstrap.min.js"></script>
     <script defer src="js/idangerous.swiper.min.js"></script>
@@ -559,14 +476,26 @@
     <script defer src="js/slick.min.js"></script>
     <script defer src="js/owl.carousel.min.js"></script>
     <script defer src="js/isotope.min.js"></script>
-    <script src="js/wow.min.js"></script>
-
-
     <!-- === -->
 
 
     <!-- ===== -->
     <script defer src="js/scripts.js"></script>
+    <script>
+        window.onload = function() {
+            var context = new AudioContext();
+            // Setup all nodes
+            ...
+        }
+
+        // One-liner to resume playback when user interacted with the page.
+        document.querySelector('button').addEventListener('click', function() {
+            context.resume().then(() => {
+                console.log('Playback resumed successfully');
+            });
+        });
+    </script>
+
 </body>
 
 </html>

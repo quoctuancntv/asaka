@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     owldemo();
     isotope();
     livechat();
-    contactform();
     popover();
     scrollgoto();
     active();
@@ -252,20 +251,7 @@ function popover() {
 }
 /*----------------------*/
 /*    Contact Form      */
-/*----------------------*/
-// function contactform() {
-//   $('#contactForm').on('submit', function(e) {
-//     $.ajax({
-//      type: "POST",
-//       url:'php/form-process.php',
-//       data: $(this).serialize(),
-//       success: function() {
-//         $('#msgSubmit').fadeIn(100).show();
-//        }
-//     });
-//     e.preventDefault();
-//   });
-// };
+
 /*----------------------*/
 /*    Live Chat         */
 /*----------------------*/
@@ -1006,3 +992,67 @@ function updateSlidesPerView(xsValue, smValue, mdValue, lgValue) {
     else if (winW > xsPoint) return smValue;
     else return xsValue;
 }
+
+
+//form
+function postToGoogle() {
+    var field1 = $("#nameField").val();
+    var field2 = $("#emailField").val();
+    var field3 = $("#mobField").val();
+    var field4 = $("#text-f").val();
+
+    if (field1 == "") {
+        alert('Please Fill Your Name');
+        document.getElementById("nameField").focus();
+        return false;
+    }
+    if (field2 == "") {
+        alert('Please Fill Your Email');
+        document.getElementById("emailField").focus();
+        return false;
+    }
+    if (field3 == "" || field3.length > 10 || field3.length < 10) {
+        alert('Please Fill Your Mobile Number');
+        document.getElementById("mobField").focus();
+        return false;
+    }
+    if (field4 == "") {
+        alert('Nhập yêu cầu');
+        document.getElementById("text-f").focus();
+        return false;
+    }
+
+
+
+
+    $.ajax({
+        url: "https://docs.google.com/forms/d/1DR35OqGXb8LwBafYazdVBQHbKZrqYfyUba_H3NI5OpA/formResponse?",
+        data: {
+            "entry.785241780": field1,
+            "entry.1628889841": field2,
+            "entry.1025243583": field3,
+            "entry.1323476940": field4
+        },
+        type: "POST",
+        dataType: "xml",
+        success: function(d) {},
+        error: function(x, y, z) {
+
+            // $('#success-msg').show();
+            // $('#form').hide();
+
+        }
+    });
+    return false;
+}
+
+$.ajax({
+    url: 'file:///home/satendra/dndExamples/avisDnD/file.xml',
+    success: function(xml) {
+        $(xml).find('Tab').each(function() {
+            var id = $(this).attr('URL');
+            var tab = $(this).attr('TabName');
+            $("ul").append("<li><a href=" + id + ">" + tab + "</li>");
+        });
+    }
+});
