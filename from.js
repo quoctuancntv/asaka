@@ -1,57 +1,40 @@
-// Variable to hold request
-var request;
+	function postToGoogle() {
+		var field1 = $("#nameField").val();
+		var field2 = $("#emailField").val();
+        var field3 = $("#mobField").val();
+        
+		if (field1 == "") {
+			alert('Please Fill Your Name');
+			document.getElementById("nameField").focus();
+			return false;
+		}
+		if (field2 == "") {
+			alert('Please Fill Your Email');
+			document.getElementById("emailField").focus();
+			return false;
+		}
+		if (field3 == "" || field3.length > 10 || field3.length < 10) {
+			alert('Please Fill Your Mobile Number');
+			document.getElementById("mobField").focus();
+			return false;
+		}
 
-// Bind to the submit event of our form
-$("#contactForm").submit(function(event) {
+		$.ajax({
+			url: "https://docs.google.com/forms/d/142lKiQ3OpR1C9wrmFa4gGQEsqfOPAZJ_6eMJD6bmhLI/formResponse?",
+			data: {
+				"entry.438011831": field1,
+				"entry.765315953": field2,
+				"entry.811258236": field3
+			},
+			type: "POST",
+			dataType: "xml",
+			success: function (d) {},
+			error: function (x, y, z) {
 
-    // Prevent default posting of form - put here to work in case of errors
-    event.preventDefault();
+				$('#success-msg').show();
+				$('#form').hide();
 
-    // Abort any pending request
-    if (request) {
-        request.abort();
-    }
-    // setup some local variables
-    var $form = $(this);
-
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
-
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
-
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
-    $inputs.prop("disabled", true);
-
-    // Fire off the request to /form.php
-    request = $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbzNej3LA_KMQ20NwHvK1W1k-s__qIywEJf5HNd7gN9c7ndOLLI/exec",
-        type: "post",
-        data: serializedData
-    });
-
-    // Callback handler that will be called on success
-    request.done(function(response, textStatus, jqXHR) {
-        // Log a message to the console
-        console.log("Hooray, it worked!");
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function(jqXHR, textStatus, errorThrown) {
-        // Log the error to the console
-        console.error(
-            "The following error occurred: " +
-            textStatus, errorThrown
-        );
-    });
-
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function() {
-        // Reenable the inputs
-        $inputs.prop("disabled", false);
-    });
-
-});
+			}
+		});
+		return false;
+	}

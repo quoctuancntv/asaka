@@ -995,7 +995,9 @@ function updateSlidesPerView(xsValue, smValue, mdValue, lgValue) {
 
 
 //form
+
 function postToGoogle() {
+    
     var field1 = $("#nameField").val();
     var field2 = $("#emailField").val();
     var field3 = $("#mobField").val();
@@ -1023,7 +1025,7 @@ function postToGoogle() {
     }
 
 
-
+    
 
     $.ajax({
         url: "https://docs.google.com/forms/d/1DR35OqGXb8LwBafYazdVBQHbKZrqYfyUba_H3NI5OpA/formResponse?",
@@ -1034,12 +1036,12 @@ function postToGoogle() {
             "entry.1323476940": field4
         },
         type: "POST",
-        dataType: "xml",
+        dataType: "xml",       
         success: function(d) {},
         error: function(x, y, z) {
 
-            // $('#success-msg').show();
-            // $('#form').hide();
+            $('#form').hide();
+            $('#success-msg').show();
 
         }
     });
@@ -1056,3 +1058,15 @@ $.ajax({
         });
     }
 });
+
+
+// img mdal
+
+$( 'a a' ).remove();
+
+document.documentElement.setAttribute("lang", "en");
+document.documentElement.removeAttribute("class");
+
+axe.run( function(err, results) {
+  console.log( results.violations );
+} );
