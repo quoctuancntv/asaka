@@ -1070,3 +1070,40 @@ document.documentElement.removeAttribute("class");
 axe.run( function(err, results) {
   console.log( results.violations );
 } );
+
+//form 2
+
+function postToGoogle2() {
+		var field4 = $("#emailField-1").val();
+        var field5 = $("#mobField-1").val();
+        
+	
+		if (field4 == "") {
+			alert('Please Fill Your Email');
+			document.getElementById("emailField-1").focus();
+			return false;
+		}
+		if (field5 == "" || field5.length > 10 || field5.length < 10) {
+			alert('Please Fill Your Mobile Number');
+			document.getElementById("mobField-1").focus();
+			return false;
+		}
+
+		$.ajax({
+			url: "https://docs.google.com/forms/d/1oFAUr5QgZ1Zf7HYjZ9RNWzSfr_ggK7lQz_SXSSBiS14/formResponse?",
+			data: {
+				"entry.1608436158": field4,
+				"entry.1503016573": field5
+			},
+			type: "POST",
+			dataType: "xml",
+			success: function (d) {},
+			error: function (x, y, z) {
+
+				$('#success-msg-1').show();
+				$('#form-2').hide();
+
+			}
+		});
+		return false;
+	}
